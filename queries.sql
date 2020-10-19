@@ -20,7 +20,7 @@ CREATE TABLE dept_emp(
 
 CREATE TABLE dept_manager(
 	dept_no VARCHAR,
-	dept_name VARCHAR
+	emp_no INT
 );
 
 CREATE TABLE employees(
@@ -42,7 +42,6 @@ CREATE TABLE titles(
 	title_id CHAR(5),
 	title VARCHAR(20)
 );
-
 
 --TESTING TO SEE IF WE SUCCESSFULLY CREATED THE QUERIES
 
@@ -69,6 +68,15 @@ SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date like '%1986';
 
+--TASK 3: LIST THE MANAGER FOR EACH DEPARTMENT AND THEIR DEPARTMENT NUMBER & NAME,
+--MANAGER EMPLOYEE NUMBER, LAST NAME, AND FIRST NAME
+SELECT departments.dept_no, departments.dept_name, dept_manager.emp_no, employees.last_name, employees.first_name
+FROM employees
+JOIN dept_manager
+	ON dept_manager.emp_no = employees.emp_no
+JOIN departments
+	ON dept_manager.dept_no = departments.dept_no;
+
 --TASK 4: LIST THE DEPARTMENT OF EACH EMPLOYEE WITH THEIR EMPLOYEE NUMBER, LAST NAME,
 --FIRST NAME, AND DEPARTMENT NAME
 SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
@@ -82,5 +90,15 @@ JOIN departments
 --TASK 5: LIST FIRST NAME, LAST NAME, AND SEX FOR ALL EMPLOYEES THAT HAVE THE FIRST NAME
 --HERCULES AND THEIR LAST NAME BEGINS WITH A B
 SELECT first_name, last_name, sex
-from employees
+FROM employees
 WHERE first_name = 'Hercules' AND last_name like 'B%';
+
+--TASK 6: LIST ALL EMPLOYEES IN THE SALES DEPARTMENT ALONG WITH THEIR EMPLOYEE NUMBER,
+--FIRST NAME, LAST NAME, AND DEPARTMENT NAME
+
+
+--TASK 7: LIST ALL EMPLOYEES IN THE SALES AND DEVELOPMENT DEPARTMENT
+
+
+--TASK 8: IN DESCENDING ORDER LIST THE FREQUENCY COUNT OF EMPLOYEE LAST NAMES
+
