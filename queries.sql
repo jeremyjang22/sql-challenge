@@ -69,6 +69,16 @@ SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date like '%1986';
 
+--TASK 4: LIST THE DEPARTMENT OF EACH EMPLOYEE WITH THEIR EMPLOYEE NUMBER, LAST NAME,
+--FIRST NAME, AND DEPARTMENT NAME
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM employees
+JOIN dept_emp
+	ON employees.emp_no = dept_emp.emp_no
+JOIN departments
+	ON dept_emp.dept_no = departments.dept_no;
+
+
 --TASK 5: LIST FIRST NAME, LAST NAME, AND SEX FOR ALL EMPLOYEES THAT HAVE THE FIRST NAME
 --HERCULES AND THEIR LAST NAME BEGINS WITH A B
 SELECT first_name, last_name, sex
