@@ -68,3 +68,9 @@ ON employees.emp_no = salaries.emp_no;
 SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date like '%1986';
+
+--TASK 5: LIST FIRST NAME, LAST NAME, AND SEX FOR ALL EMPLOYEES THAT HAVE THE FIRST NAME
+--HERCULES AND THEIR LAST NAME BEGINS WITH A B
+SELECT first_name, last_name, sex
+from employees
+WHERE first_name = 'Hercules' AND last_name like 'B%';
