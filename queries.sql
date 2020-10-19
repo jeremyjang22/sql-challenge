@@ -57,3 +57,14 @@ SELECT * FROM employees;
 SELECT * FROM salaries;
 
 SELECT * FROM titles;
+
+--TASK 1: SHOW EMPLOYEE NUMBER, LAST NAME, FIRST NAME, SEX, AND SALARY FOR EACH EMPLOYEE
+SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salary
+FROM employees
+LEFT JOIN salaries
+ON employees.emp_no = salaries.emp_no;
+
+--TASK 2: LIST FIRST NAME, LAST NAME AND HIRE DATE FOR THOSE WHO WERE HIRED IN 1986
+SELECT first_name, last_name, hire_date
+FROM employees
+WHERE hire_date like '%1986';
