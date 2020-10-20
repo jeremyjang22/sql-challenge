@@ -73,3 +73,40 @@ SELECT last_name, COUNT(last_name) AS Frequency
 FROM employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC;
+
+--EPILOGUE search for id number: 499942
+
+SELECT * 
+FROM employees
+WHERE employees.emp_no = 499942
+-- title: e0004, dob: 1/10/1963, name: April Foolsday, Gender: F, date hired: 2/10/1997
+
+SELECT * 
+FROM salaries
+WHERE salaries.emp_no = 499942
+-- salary: 40,000
+
+SELECT * 
+FROM dept_emp
+WHERE dept_emp.emp_no = 499942
+--dept_no : d005
+
+SELECT * 
+FROM dept_manager
+WHERE dept_manager.emp_no = 499942
+-- not a manager
+
+--DOING IT ALL IN ONE STEP:
+SELECT employees.emp_no, employees.first_name, employees.last_name,
+	employees.birth_date, employees.hire_date, departments.dept_name,
+	salaries.salary, titles.title
+FROM employees
+JOIN dept_emp
+	ON dept_emp.emp_no = employees.emp_no
+JOIN departments
+	ON departments.dept_no = dept_emp.dept_no
+JOIN salaries
+	ON salaries.emp_no = employees.emp_no
+JOIN titles
+	ON titles.title_id = employees.emp_title_id
+WHERE employees.emp_no = 499942;
